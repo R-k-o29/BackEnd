@@ -1,0 +1,3 @@
+Creating package.json file:
+
+Command: npm init -y

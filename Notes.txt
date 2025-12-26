@@ -1,0 +1,75 @@
+Backend:
+Part of the server side that we cannot see. It is the working or behind the scenes of the application or website. Includes stuff like sever, database etc
+
+Node.js:
+It is an open source and cross platform JS runtime environment. Runs the V8 JS engine outside the browser which makes it very performant.
+
+npm-node package manager 
+npx-node package executer
+
+Nodemon package:
+command: npm i -g nodemon 
+Give permissions(In windows powershell): Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+run command: nodemon index.js
+
+Moduels:
+Types:
+1. Core Moduels (fs,http,path etc)
+2. Local Moduels    (created by developers and located within projects)
+3. Third-Party Moduels (modules installed via npm)
+
+require() keyword is used in nodejs to import modules
+
+http:
+http.createServer((req,res)=>{
+
+})
+
+
+Express.js:
+Lightweight and flexible Node.js framework
+
+Core features:
+1. Routing 
+2. Middleware
+3. Templating
+4. structure MVC pattern in project
+
+Express API methods:
+
+1.get() - only get methods works on browser
+2.post()
+
+3 methods how a data is passes through API
+1. Body (req.body) - JSON data
+2. Query (req.query) - URL data
+2. Params (req.params.id) - Dynamic params data
+
+2 methods to send response to server:
+1. res.send()
+2. res.status(200).json({})
+
+Middleware:
+Used for token authentication between client(React) and the server(Express).
+
+let function=(req,res,next)=>{
+    //logic
+    next();
+}
+
+Route level Middleware: 
+applying middlewares in particular routes
+include the middleware name in the middle of the app.send 
+app.send("/url",middleware,(req,res)=>{})
+
+Dotenv:
+Used to store secured ids and passwords and keys etc
+
+npm i dotenv
+how to use:
+require("dotenv").config()
+process.env.KEY_NAME
+
+
+MongoDB:
+It is a document database(stored in JSON objects)
