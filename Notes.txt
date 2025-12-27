@@ -73,3 +73,27 @@ process.env.KEY_NAME
 
 MongoDB:
 It is a document database(stored in JSON objects)
+
+MongoDB commands:
+
+show collections
+db.createCollection('Collection Name')
+db.'Collection Name Old'.renameCollection('Collection Name New')
+db.'Collection Name'.drop();
+
+db.dropDatabase()
+
+db.'Collection Name'.insertOne({});
+db.'Collection Name'.insertMany([{}]);
+
+db.'Collection Name'.find();
+db.'Collection Name'.find( {category: "News"} )
+db.'Collection Name'.find({}, {title: 1, date: 1})
+
+db.'Collection Name'.updateOne({},{ $set:{}});
+db.'Collection Name'.updateMany({ }, { $set: { } } )
+db.'Collection Name'.updateMany({}, { $inc: { } })
+
+db.'Collection Name'.deleteOne({});
+db.'Collection Name'.deleteMany({});
+
