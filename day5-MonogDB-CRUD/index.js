@@ -68,10 +68,16 @@ app.put("/student-update/:id",async (req,res)=>{
 
     let {id}=req.params;
     let {sName,sEmail}=req.body;
-    let obj={sName,sEmail};
+    // let obj={sName,sEmail};
+    let obj={};
+    if(sName!=undefined && sName!="" && sName!=null){
+        obj["sName"]=sName;
+    }
+    if(sEmail!=undefined && sEmail!="" && sEmail!=null){
+        obj["sEmail"]=sEmail;
+    }
 
-    let updateRes = await studentCollection.updateOne({_id:new ObjectId(id)},{$set:{sName,sEmail}}) //if both key and variable name is same then just pass it once
-
+    let updateRes = await studentCollection.updateOne({_id:new ObjectId(id)},{$set:obj}) //if both key and variable name is same then just pass it once
     let resObj={
         status:1,
         msg:"Data updated succesfully",
