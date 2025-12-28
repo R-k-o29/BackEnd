@@ -1,18 +1,6 @@
-let express = require('express');
-let mongoose = require('mongoose');
-let enquiryModel = require('./models/enquiry.model').enquiryModel;
-require('dotenv').config()
-let app=express();
-//connecting to database using mongoose
-mongoose.connect(process.env.DBURL).then(()=>{
-    console.log("Connected to database");
-    app.listen(process.env.PORT);
-})
+let enquiryModel = require('../models/web/userEnquiry.model').enquiryModel;
 
-app.use(express.json())
-
-
-app.post("/api/enquiry-insert",(req,res)=>{
+let enquiryInsert = (req,res)=>{
     let {sName,sEmail,sPhone,sMessage}=req.body;
 
     // console.log(sName,sEmail,sPhone,sMessage);
@@ -34,14 +22,14 @@ app.post("/api/enquiry-insert",(req,res)=>{
             Error:err.errmsg
         })
     })
-})
+}
 
-app.get("/api/enquiry-list",async (req,res)=>{
+let enquiryList = async (req,res)=>{
     let enquiryList = await enquiryModel.find();
     res.send(enquiryList)
-})
+}
 
-app.delete("/api/enquiry-delete/:id",async (req,res)=>{
+let enquiryDelete = async (req,res)=>{
     let enquiryId = req.params.id;
     // console.log(enquiryId);
 
@@ -52,9 +40,9 @@ app.delete("/api/enquiry-delete/:id",async (req,res)=>{
         msg:"Enquiry deleted",
         Res:deletedEnquiry
     });
-})
+}
 
-app.put("/api/enquiry-update/:id",async (req,res)=>{
+let enquiryUpdate = async (req,res)=>{
     let enquiryId = req.params.id;
     let {sName,sEmail,sPhone,sMessage}=req.body;
     let updateObj = {
@@ -70,4 +58,6 @@ app.put("/api/enquiry-update/:id",async (req,res)=>{
         msg:"Enquiry updated",
         Res:updateRes
     });
-})
+}
+
+module.exports={enquiryInsert,enquiryList,enquiryDelete,enquiryUpdate}
