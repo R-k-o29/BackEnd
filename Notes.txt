@@ -97,3 +97,7 @@ db.'Collection Name'.updateMany({}, { $inc: { } })
 db.'Collection Name'.deleteOne({});
 db.'Collection Name'.deleteMany({});
 
+Mongoose:
+Mongoose is an ODM(object data modeling) library for MongoDB. It is primarily used for defining the schema of the collections
+
+Model View Controller(MVC):
